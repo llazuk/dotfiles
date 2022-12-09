@@ -48,13 +48,26 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-signify'
 	----Highlight the letters while using fFtT movement
   use 'unblevable/quick-scope'
+    ----Ide setup
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+    }
+ use {
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+    }
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
   -- Todo
   --use 'ap/vim-css-color'
 	----git client, may replace it with lazygit
   --use 'tpope/vim-fugitive'
-	----use 'junegunn/gv.vim' 
+	----use 'junegunn/gv.vim'
   --use 'jpalardy/vim-slime'
   --use 'simnalamburt/vim-mundo'
 end)
-
-

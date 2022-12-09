@@ -16,7 +16,7 @@ o.wrap = false
 
 -- Highlighting the line after entering in Insert Mode
 o.cursorline = true
-o.cursorcolumn = true
+-- o.cursorcolumn = true
 
 -- Python settings
 o.tabstop = 4
@@ -32,4 +32,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.py", "*.lua"},
   callback = require('kss.utilities.utils').trim_trailing_whitespaces,
 })
-
