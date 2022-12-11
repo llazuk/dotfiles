@@ -14,9 +14,6 @@ k.set({'n', 'v', 'i'}, '<Leader>m', ':tabnext<CR>', {noremap = true, silent = tr
 k.set('v', '<', '<gv', {noremap = true, silent = true})
 k.set('v', '>', '>gv', {noremap = true, silent = true})
 
--- Turn on Calendar
-k.set({'n', 'v', 'i'}, '<leader>c', ':Calendar<CR>')
-
 -- VimWiki Search
 k.set({'n', 'v', 'i'}, '<leader>wf', ':VWS ')
 

@@ -9,6 +9,7 @@ o.showtabline = 2
 o.modeline = false
 o.clipboard = 'unnamedplus'
 o.ignorecase = true
+o.termguicolors = true
 
 -- craftzdog/dotfiles-public/
 o.smartindent = true
