@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
     -- Start screen
     use 'nvim-tree/nvim-web-devicons'
     use 'goolord/alpha-nvim'
+    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
     ----FZF and more
     use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',

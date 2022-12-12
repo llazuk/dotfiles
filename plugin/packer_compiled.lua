@@ -95,6 +95,12 @@ _G.packer_plugins = {
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/home/kss/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim",
+    wants = { "nvim-web-devicons" }
+  },
   ["calendar-vim"] = {
     loaded = true,
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/calendar-vim",
