@@ -55,6 +55,7 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     }
+    use 'jose-elias-alvarez/null-ls.nvim'
     -- Completion setup
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
