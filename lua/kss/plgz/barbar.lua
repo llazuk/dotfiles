@@ -1,0 +1,3 @@
+-- require 'bufferline'.setup {
+--     hide = { extensions = false, inactive = false },
+-- }
