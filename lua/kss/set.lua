@@ -4,7 +4,7 @@ local o = vim.o
 -- Globals
 o.number = true
 o.relativenumber = true
-vim.cmd("colorscheme gruvbox")
+vim.cmd.colorscheme("gruvbox")
 o.showtabline = 2
 o.modeline = false
 o.clipboard = 'unnamedplus'
@@ -33,3 +33,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.py", "*.lua"},
   callback = require('kss.utilities.utils').trim_trailing_whitespaces,
 })
+
+-- Undo Dir
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undofile = true

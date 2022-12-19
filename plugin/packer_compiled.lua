@@ -232,6 +232,11 @@ _G.packer_plugins = {
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/true-zen.nvim",
     url = "https://github.com/Pocco81/true-zen.nvim"
   },
+  undotree = {
+    loaded = true,
+    path = "/home/kss/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
   ["vim-colors-solarized"] = {
     loaded = true,
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/vim-colors-solarized",
