@@ -91,3 +91,6 @@ require('lspconfig')['sumneko_lua'].setup {
 require('lspconfig')['jedi_language_server'].setup {
     capabilities = capabilities
 }
+require('lspconfig')['texlab'].setup {
+    capabilities = capabilities
+}

@@ -82,6 +82,9 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     -- Undo tree Mundo alternative
     use 'mbbill/undotree'
+    -- LaTeX
+    -- use 'xuhdev/vim-latex-live-preview'
+    use 'lervag/vimtex'
 
     -- Todo
     -- Git client, may replace it with lazygit
