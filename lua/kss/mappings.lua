@@ -53,5 +53,5 @@ k.set('n','<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
 k.set('n','<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 k.set('n','<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 
--- Null-Ls Formatter
+-- Null-Ls Formatter used for Json
 k.set('n', '<leader>fo', ':lua vim.lsp.buf.format()<Cr>')
