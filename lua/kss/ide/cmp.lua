@@ -4,6 +4,7 @@ local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -48,6 +49,8 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = "treesitter" },
+        { name = "nvim_lua" },
+        { name = "nvim_lsp_signature_help" },
         -- { name = 'vsnip' }, -- For vsnip users.
         { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -60,7 +63,13 @@ cmp.setup({
       mode = 'text_symbol', -- show only symbol annotations
       maxwidth = 80, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
+    menu = ({
+      buffer = "[Buffer]",
+      nvim_lsp = "[LSP]",
+      luasnip = "[LuaSnip]",
+      nvim_lua = "[Lua]",
+      latex_symbols = "[Latex]",
+    })
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
       -- before = function (entry, vim_item)

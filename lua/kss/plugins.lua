@@ -77,6 +77,9 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-cmp'
     -- Icons in cmp
     use 'onsails/lspkind.nvim'
+    -- Additional cmp plugins
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
     -- Snippet management
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
