@@ -217,6 +217,11 @@ _G.packer_plugins = {
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["outline.nvim"] = {
+    loaded = true,
+    path = "/home/kss/.local/share/nvim/site/pack/packer/start/outline.nvim",
+    url = "https://github.com/hedyhli/outline.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/kss/.local/share/nvim/site/pack/packer/start/packer.nvim",
