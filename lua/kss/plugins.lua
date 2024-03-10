@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
     ----FZF and more
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use 'easymotion/vim-easymotion'
