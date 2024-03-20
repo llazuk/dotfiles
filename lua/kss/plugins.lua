@@ -1,102 +1,106 @@
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 
-local packer_bootstrap = ensure_packer()
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-    -- Package management
-    use 'wbthomason/packer.nvim'
-    use {
+local plugins = { -- Package management
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
+    },
     -- Colorschemes
-    use 'gruvbox-community/gruvbox'
-    use 'altercation/vim-colors-solarized'
-    use 'vimwiki/vimwiki'
-    use 'mattn/calendar-vim'
+    'gruvbox-community/gruvbox',
+    'altercation/vim-colors-solarized',
+
+    {
+        'vimwiki/vimwiki',
+        init = function()
+            vim.g.vimwiki_list = {{ path = '~/notes', path_html = '~/notes/vimwiki-html', syntax = 'markdown', ext = '.md' }}
+        end,
+    },
+    'mattn/calendar-vim',
     -- Hyperfocus writing (highlights paragraphs under your cursor)
-    use 'junegunn/limelight.vim'
+    'junegunn/limelight.vim',
     -- Distraction free writing (centers the text)
-    use 'Pocco81/true-zen.nvim'
+    'Pocco81/true-zen.nvim',
     -- F8 to open tags view
-    use {
+    {
         'stevearc/aerial.nvim',
         config = function() require('aerial').setup() end
-    }
+    },
     -- Displays thin line at each indentaion
-    use 'lukas-reineke/indent-blankline.nvim'
-    use {
+    'lukas-reineke/indent-blankline.nvim',
+    {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    }
+    },
     -- Start screen
-    use 'nvim-tree/nvim-web-devicons'
-    use 'goolord/alpha-nvim'
-    use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
+    'goolord/alpha-nvim',
+    { 'romgrk/barbar.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     ----FZF and more
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-    use 'easymotion/vim-easymotion'
-    use 'numToStr/Comment.nvim'
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.5',
+        dependencies = { { 'nvim-lua/plenary.nvim' } }
+    },
+    'easymotion/vim-easymotion',
+    'numToStr/Comment.nvim',
     -- Rainbow color brackets
-    use 'luochen1990/rainbow'
+    'luochen1990/rainbow',
     -- Git changes in the sign column
-    -- Use 'mhinz/vim-signify'
-    use 'lewis6991/gitsigns.nvim'
-    -- Highlight the letters while using fFtT movement
-    use 'unblevable/quick-scope'
+    -- 'mhinz/vim-signify'
+    'lewis6991/gitsigns.nvim',
+    -- Highlight the letters while using fFtT movement - broken now, wait for a fix
+    -- 'unblevable/quick-scope',
     -- Ide setup
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-    use {
+        build = ':TSUpdate'
+    },
+    {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-    }
-    use 'jose-elias-alvarez/null-ls.nvim'
+    },
+    'jose-elias-alvarez/null-ls.nvim',
     -- Completion setup
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
     -- Icons in cmp
-    use 'onsails/lspkind.nvim'
+    'onsails/lspkind.nvim',
     -- Additional cmp plugins
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
     -- Snippet management
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
     -- Css colorizer
-    use 'norcalli/nvim-colorizer.lua'
+    'norcalli/nvim-colorizer.lua',
     -- Undo tree Mundo alternative
-    use 'mbbill/undotree'
+    'mbbill/undotree',
     -- LaTeX
-    -- use 'xuhdev/vim-latex-live-preview'
-    use 'lervag/vimtex'
+    -- 'xuhdev/vim-latex-live-preview'
+    'lervag/vimtex',
 
     -- Todo
     -- Git client, may replace it with lazygit
-    --use 'tpope/vim-fugitive'
-    --use 'junegunn/gv.vim'
-    --use 'jpalardy/vim-slime'
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+    --'tpope/vim-fugitive'
+    --'junegunn/gv.vim'
+    --'jpalardy/vim-slime'
+}
+
+local opts = {}
+
+require("lazy").setup(plugins, opts)
